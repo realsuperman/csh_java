@@ -16,5 +16,6 @@ public class Chapter3 {
         int num2=(int)ch2; // 자동형 변환도 강제 캐스팅 처럼 (int)이런 꼴을 붙여 줄 수 있다.
         System.out.println("문자 A의 유니코드 값"+num1);
         System.out.println("문자 Z의 유니코드 값"+num2);
+        
     }
 }
