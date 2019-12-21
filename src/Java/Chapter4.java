@@ -30,6 +30,5 @@ public class Chapter4 {
         System.out.println(csh|csh2);
         System.out.println(~csh);
         System.out.println(csh^csh2);
-
     }
 }
