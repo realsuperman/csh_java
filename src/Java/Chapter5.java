@@ -53,6 +53,22 @@ public class Chapter5 {
             System.out.println("Hello World");
         }
 
+        for(int i=0;i<100;i++){
+            if(i>10) continue;
+        }
+
+        for(int i=0;i<100;i++){
+            if(i>10) break;
+        }
+
+        int csh=0;
+        for(int i=0;i<100;i++){
+            for(int j=0;j<100;j++){
+                csh++;
+            }
+        }
+        System.out.println(csh);
+
         int hap=0;
         for(int i=1;i<101;i++){ //1부터 100까지의 합
             hap+=i;
