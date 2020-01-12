@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Project4 {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        PhoneInfo[] phoneInfo = new PhoneInfo[100];
         int num;
+        PhoneBookManager pbm= new PhoneBookManager(100);
         while(true){
             System.out.println("선택하세요...");
             System.out.println("1.데이터 입력");
@@ -17,7 +17,7 @@ public class Project4 {
             num=sc.nextInt();
             sc.nextLine();
             if(num==4) break;
-            PhoneBookManager.controlData(phoneInfo,num);
+            pbm.controlData(num);
         }
     }
 }
@@ -63,20 +63,24 @@ class PhoneCompanyInfo extends PhoneInfo{
 }
 
 class PhoneBookManager{
-    static int idx=0;
-    static String name = "";
-    static String telNum = "";
-    static int choice=0;
-    static String major="";
-    static int year=0;
-    static String company="";
-    static Scanner sc = new Scanner(System.in);
-    public static void addPhoneInfo(PhoneInfo[] phoneInfo, PhoneInfo phone){
+    Scanner sc = new Scanner(System.in);
+    private int idx=0;
+    private String name = "";
+    private String telNum = "";
+    private int choice=0;
+    private String major="";
+    private int year=0;
+    private String company="";
+    private PhoneInfo[] phoneInfo;
+
+    private void addPhoneInfo(PhoneInfo phone){
         phoneInfo[idx++] = phone;
     }
-    public static void controlData(PhoneInfo[] phoneInfo, int num) {
+    public PhoneBookManager(int num){
+        phoneInfo = new PhoneInfo[num];
+    }
+    public void controlData(int num) {
         if (num == 1) {
-            clearVariable();
             System.out.println("데이터 입력을 시작합니다...");
             System.out.print("1.일반 2.대학 3.회사 ");
             choice=sc.nextInt();
@@ -92,17 +96,16 @@ class PhoneBookManager{
                 System.out.print("학년 ");
                 year=sc.nextInt();
                 sc.nextLine();
-                addPhoneInfo(phoneInfo,new PhoneUnivInfo(name,telNum,major,year));
+                addPhoneInfo(new PhoneUnivInfo(name,telNum,major,year));
             }else if(choice==3){
                 System.out.print("회사 ");
                 company=sc.nextLine();
-                addPhoneInfo(phoneInfo,new PhoneCompanyInfo(name,telNum,company));
+                addPhoneInfo(new PhoneCompanyInfo(name,telNum,company));
             }else{
                 phoneInfo[idx++] = new PhoneInfo(name,telNum);
             }
             System.out.println("데이터 입력이 완료되었습니다....");
         }else if(num==2){
-            clearVariable();
             System.out.println("데이터 검색을 시작합니다...");
             System.out.print("이름 ");
             name = sc.nextLine();
@@ -114,7 +117,6 @@ class PhoneBookManager{
             }
             System.out.println("데이터 검색이 완료되었습니다...");
         }else if(num==3){
-            clearVariable();
             System.out.println("데이터 삭제를 시작합니다...");
             System.out.print("이름 ");
             name = sc.nextLine();
@@ -134,14 +136,6 @@ class PhoneBookManager{
             }
             System.out.println("데이터 삭제가 완료되었습니다...");
         }
-    }
-    public static void clearVariable(){
-        name = "";
-        telNum = "";
-        choice=0;
-        major="";
-        year=0;
-        company="";
     }
 }
 
