@@ -166,5 +166,6 @@ class PersonalInfo{
     public void showPersonalnfo(){
         System.out.println("이름 : "+name);
         System.out.println("나이 : "+age);
+        
     }
 }
