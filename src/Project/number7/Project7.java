@@ -156,7 +156,7 @@ class PhoneBookManager{
                 PhoneInfo phone = itr.next();
                 String pName=phone.name;
                 if(pName.equalsIgnoreCase(name)){
-                    phoneInfo.remove(name);
+                    itr.remove();
                 }
             }
             System.out.println("데이터 삭제가 완료되었습니다...");
